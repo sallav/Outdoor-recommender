@@ -13,7 +13,7 @@ def main():
     locations = loc.getLocations()
     area = loc.getArea()
 
-    for (index, location) in enumerate(locations):
+    for (index, location) in enumerate(locations):                          # Get days with the best weather
         url = "https://www.foreca.fi/{}/{}/10vrk".format(area, location)
         page = scrpr.ses(url)
         days = scrpr.getDays(page)
@@ -21,7 +21,6 @@ def main():
         bestday.setLocation(location)
         best_days.append(bestday)
 
-    #best_days.sort(reverse=True)
 
     for day in best_days:
         print(day.toString())
