@@ -96,7 +96,7 @@ class Day:
 
     def halfCloudy(self):
         try:
-            if re.search('melko pilvistä', self.description, re.I) is not None:
+            if re.search('puolipilvistä', self.description, re.I) is not None:
                 return True
             else:
                 return False
@@ -114,12 +114,18 @@ class Day:
 
     def rate(self):
         if re.match('Melkein selkeää', self.description, re.I) is not None:
-            self.rating += 1
+            self.rating += 3
         elif re.match('Selkeää', self.description, re.I) is not None:
+            self.rating += 4
+        elif re.match('puolipilvistä', self.description, re.I):
             self.rating += 2
+        elif re.match('melko pilvistä', self.description, re.I):
+            self.rating += 1
         if re.match('poutaa', self.description, re.I) is not None:
             self.rating += 1
         elif re.match('sadetta', self.description, re.I) is not None:
+            self.rating -= 1
+        if self.getRainFall()>0:
             self.rating -= 1
 
     def getRating(self):

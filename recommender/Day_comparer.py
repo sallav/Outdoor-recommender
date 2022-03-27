@@ -21,11 +21,11 @@ class Day_comparer:
         clears = day_evaluator.clearDays(days_list)
         hfcl = day_evaluator.halfCloudyDays(days_list)
         if len(clears)==0:                                      # Choose intersection or the better option
-            return self.chooseBetter(fairs, hfcl)
+            return self.chooseBetter(fairs, hfcl, days_list)
         else:
-            return self.chooseFromBoth(fairs, clears)
+            return self.chooseFromBoth(fairs, clears, days_list)
 
-    def chooseFromBoth(self, first, second):
+    def chooseFromBoth(self, first, second, all):
         f = set(first)
         s = set(second)
         bests = f.intersection(s)
@@ -37,12 +37,16 @@ class Day_comparer:
             bests = f                   # Here fair is better than clear
         if len(bests)==0:
             bests = s
+        if len(bests)==0:
+            bests = sorted(all, key=lambda x: (x.getRating(), x.getWarmest()), reverse=True)[0]
         bests = list(bests)
         return bests
 
-    def chooseBetter(self, first, second):
+    def chooseBetter(self, first, second, all):
         bests = first
         if len(bests)==0:
             bests = second
+        if len(bests)==0:
+            bests = sorted(all, key=lambda x: (x.getRating(), x.getWarmest()), reverse=True)[0]
         return list(bests)
 

@@ -21,8 +21,9 @@ def main():
         bestday.setLocation(location)
         best_days.append(bestday)
 
+    sorted_days = sorted(best_days, key=lambda x: (x.getRating(), x.getWarmest()), reverse=True)    # Sort by rating and warmth
 
-    for day in best_days:
+    for day in sorted_days:
         print(day.toString())
 
 if __name__ == "__main__":
