@@ -1,2 +1,2 @@
 # Outdoor-recommender
-Get recommendations based on weather
+Get recommendations of location based on weather
