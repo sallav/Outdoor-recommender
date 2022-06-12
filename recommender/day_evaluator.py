@@ -4,7 +4,7 @@ import re
 class day_evaluator:
         
     @staticmethod
-    def fairDays(day_list):             # Resurns all fair Days from a list
+    def fairDays(day_list) -> list:             # Resurns all fair Days from a list
         try:
             fairs = []
             for day in day_list:
@@ -16,7 +16,7 @@ class day_evaluator:
             return None
 
     @staticmethod                       # Returns all clear Days from a list
-    def clearDays(day_list):
+    def clearDays(day_list) -> list:
         try:
             clears = []
             for day in day_list:
@@ -28,7 +28,7 @@ class day_evaluator:
             return None
 
     @staticmethod                       # Return all half cloudy Days from a list
-    def halfCloudyDays(day_list):
+    def halfCloudyDays(day_list) -> list:
         try:
             halfcls = []
             for day in day_list:
@@ -40,7 +40,7 @@ class day_evaluator:
             return None
 
     @staticmethod
-    def dayWithBestTemp(day_list, maxtemp):           # Returns the warmest Day from a list
+    def dayWithBestTemp(day_list, maxtemp) -> object:           # Returns the warmest Day from a list
         try:
             best_temp = -100
             best_day = day_list[0]                  # If all days are equal choose first
@@ -57,7 +57,7 @@ class day_evaluator:
             return None
 
     @staticmethod
-    def removeWindyDays(day_list, maxwind):             # Remove days that have windspeed over maximum
+    def removeWindyDays(day_list, maxwind) -> list:             # Remove days that have windspeed over maximum
         try:
             good_days = []
             for day in day_list:

@@ -54,20 +54,29 @@ class Day:
         return self.description
 
     def getWarmest(self):
-        return self.warmest
+        try:
+            return int(self.warmest)
+        except Exception as e:
+            print(e)
 
     def getWindSpeed(self):
-        return self.wind_speed
+        try:
+            return int(self.wind_speed)
+        except Exception as e:
+            print(e)
 
     def getRainFall(self):
-        return self.rain_fall
+        try:
+            return int(self.rain_fall)
+        except Exception as e:
+            print(e)
 
     def getLocation(self):
         return self.location
         
     def warmer(self, other):
         try:
-            if self.warmest>other.getWarmest():
+            if int(self.warmest)>other.getWarmest():
                 return True
             else:
                 return False
@@ -113,17 +122,17 @@ class Day:
             return ''
 
     def rate(self):
-        if re.match('Melkein selkeää', self.description, re.I) is not None:
+        if re.search('Melkein selkeää', self.description, re.I) is not None:
             self.rating += 3
-        elif re.match('Selkeää', self.description, re.I) is not None:
+        elif re.search('Selkeää', self.description, re.I) is not None:
             self.rating += 4
-        elif re.match('puolipilvistä', self.description, re.I):
+        elif re.search('puolipilvistä', self.description, re.I):
             self.rating += 2
-        elif re.match('melko pilvistä', self.description, re.I):
+        elif re.search('melko pilvistä', self.description, re.I):
             self.rating += 1
-        if re.match('poutaa', self.description, re.I) is not None:
+        if re.search('poutaa', self.description, re.I) is not None:
             self.rating += 1
-        elif re.match('sadetta', self.description, re.I) is not None:
+        elif re.search('sadetta', self.description, re.I) is not None:
             self.rating -= 1
         if self.getRainFall()>0:
             self.rating -= 1
